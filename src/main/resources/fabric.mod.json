@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "modid",
 	"version": "${version}",
-	"name": "Example mod",
+	"name": "Elemental Benders Mod",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
 		"Me!"
@@ -16,10 +16,10 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+			"com.example.ElementalBendersMod"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+			"com.example.ElementalBendersModClient"
 		]
 	},
 	"mixins": [
@@ -30,6 +30,7 @@
 		}
 	],
 	"depends": {
+		"fabric-key-binding-api-v1": "*",
 		"fabricloader": ">=0.15.0",
 		"minecraft": "~1.20.4",
 		"java": ">=17",
