@@ -1,8 +1,11 @@
 package com.example.entity;
 
+import com.example.ElementalBendersMod;
 import com.example.entity.bending.fragments.fire.lightning.LightningAttackEntity;
 import com.example.entity.bending.fragments.fire.trace.FireTraceAttackEntity;
 import com.example.entity.bending.fragments.fire.wave.FireWaveAttackEntity;
+import com.example.entity.mob.bender.fire.FireBenderEntity;
+import com.example.entity.renderer.FireBenderEntityRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.util.Identifier;
@@ -37,5 +40,7 @@ public class ModEntityRenderer {
                     }
                 }
         );
+
+        EntityRendererRegistry.register( ModEntities.FIRE_BENDER, FireBenderEntityRenderer::new);
     }
 }
