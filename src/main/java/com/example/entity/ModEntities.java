@@ -44,8 +44,8 @@ public class ModEntities extends ModEntityIdentifiers {
     public static final EntityType<FireBenderEntity> FIRE_BENDER = Registry.register(
             Registries.ENTITY_TYPE,
             FIRE_BENDER_ID,
-            FabricEntityTypeBuilder.<FireBenderEntity>create(SpawnGroup.CREATURE, FireBenderEntity::new)
-                    .dimensions(EntityDimensions.fixed(1f, 1f)).trackRangeBlocks(100)
+            FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, FireBenderEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.7f, 2f)).trackRangeBlocks(100)
                     .trackedUpdateRate(100)
                     .build()
     );
