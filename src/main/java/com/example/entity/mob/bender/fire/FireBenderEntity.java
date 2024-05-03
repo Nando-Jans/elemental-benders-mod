@@ -1,5 +1,6 @@
 package com.example.entity.mob.bender.fire;
 
+import com.example.ElementalBendersMod;
 import com.example.entity.bending.fragments.fire.trace.FireTraceAttackEntity;
 import com.example.entity.bending.fragments.fire.trace.FireTraceAttackEntitySettings;
 import net.minecraft.entity.EntityType;
@@ -20,6 +21,7 @@ import java.util.EnumSet;
 import java.util.UUID;
 
 public class FireBenderEntity extends PathAwareEntity implements Angerable {
+    @Nullable
     private UUID angryAt;
     private int angerTime;
 
@@ -38,9 +40,10 @@ public class FireBenderEntity extends PathAwareEntity implements Angerable {
     protected void initGoals() {
         this.goalSelector.add(4, new FireBenderAttackGoal(this));
         this.goalSelector.add(5, new SwimGoal(this));
-        this.goalSelector.add(6, new WanderAroundGoal(this, 0.15D));
-        this.goalSelector.add(7, new StopAndLookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.add(8, new LookAroundGoal(this));
+        this.goalSelector.add(6, new GoToWalkTargetGoal(this, 1.0D));
+        this.goalSelector.add(7, new WanderAroundGoal(this, 1.0D));
+        this.goalSelector.add(8, new StopAndLookAtEntityGoal(this, PlayerEntity.class, 5.0F));
+        this.goalSelector.add(9, new LookAroundGoal(this));
     }
 
     public static DefaultAttributeContainer.Builder fireBenderAttributeContainer() {
@@ -82,10 +85,14 @@ public class FireBenderEntity extends PathAwareEntity implements Angerable {
     }
 
 
+
     @Override
     public void tick() {
         super.tick();
-        UUID angryAt = this.getAngryAt();
+
+        if (this.angryAt != null) {
+            ElementalBendersMod.LOGGER.info("Is angry at: " + this.angryAt);
+        }
     }
 
     private static class FireBenderAttackGoal extends Goal {
